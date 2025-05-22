@@ -4,6 +4,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import db from './config/mongoose-connection.js'
 import ownerRouter from './routes/ownersRouter.js'
 import usersRouter from './routes/usersRouter.js'
 import productsRouter from './routes/productsRouter.js'

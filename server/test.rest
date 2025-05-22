@@ -6,6 +6,13 @@ GET {{base_url}}/owners
 
 ###create route
 POST {{base_url}}/owners/create
+Content-Type: application/json
+
+{
+    "fullname":"Shashi preetham",
+      "email":"shashi@gmail.com",
+      "password":"bt123"
+}
 
 
 ###initial route
