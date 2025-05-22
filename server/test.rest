@@ -1,0 +1,22 @@
+
+@base_url=http://localhost:5656
+
+###initial route
+GET {{base_url}}/owners
+
+###create route
+POST {{base_url}}/owners/create
+
+
+###initial route
+GET {{base_url}}/products
+
+###create route
+POST {{base_url}}/products/create
+
+
+###initial route
+GET {{base_url}}/users
+
+###create route
+POST {{base_url}}/users/create

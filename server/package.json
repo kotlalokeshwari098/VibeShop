@@ -2,17 +2,20 @@
   "name": "server",
   "version": "1.0.0",
   "main": "app.js",
-  "type":"commonjs",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"node --watch app.js"
+    "dev": "node --require dotenv/config --watch app.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "config": "^4.0.0",
     "cookie-parser": "^1.4.7",
+    "debug": "^4.4.1",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "mongoose": "^8.15.0",
     "multer": "^2.0.0"
