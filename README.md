@@ -18,13 +18,13 @@ Shopping is more than just buying products — it’s about celebrating moments 
 ## Tech Stack 🛠️
 
 
-* **Frontend:** React.js, CSS (or Tailwind)
+* **Frontend:** React.js, Tailwind CSS
 * **Backend:** Node.js, Express.js
-* **Database:** MongoDB / JSON files (for prototyping)
-* **API:** RESTful endpoints for product recommendations
-* **Tools:** Git, npm, VSCode (or your choice)
+* **Database:** MongoDB 
+* **API:** RESTful endpoints 
 
----
+
+
 
 ## Usage 🚀
 
@@ -34,5 +34,5 @@ Shopping is more than just buying products — it’s about celebrating moments 
 4. View personalized product recommendations curated for your occasion and profile.
 5. Add products to your cart and proceed to checkout (optional, for further extension).
 
----
+
 
