@@ -1,6 +1,6 @@
 import React from 'react'
 import {createBrowserRouter,createRoutesFromElements,BrowserRouter,Route,RouterProvider} from 'react-router-dom'
-import Home from './pages/HomePage';
+import HomePage from './pages/HomePage';
 import Admin from './pages/Admin';
 import Cart from './pages/Cart'
 import CreateProducts from './pages/CreateProducts'
@@ -13,7 +13,7 @@ import AppLayout from './layouts/AppLayout';
 
  const routes=createBrowserRouter(createRoutesFromElements(
          <Route path='/' element={<AppLayout />}> 
-           <Route path='index' element={<Home />}/>
+           <Route index element={<HomePage />}/>
            <Route path='/admin' element={<Admin />}/>
            <Route path='/cart' element={<Cart />}/>
            <Route path='/createproducts' element={<CreateProducts />}/>

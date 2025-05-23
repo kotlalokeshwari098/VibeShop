@@ -69,7 +69,7 @@ function Footer() {
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-6 text-sm text-center">
-          <p>© 2023 VibeShop. All rights reserved.</p>
+          <p>© 2025 VibeShop. All rights reserved.</p>
         </div>
       </div>
     </footer>

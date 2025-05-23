@@ -54,7 +54,7 @@ function Header() {
             <Link to='/shop' className="block py-2 px-4 hover:bg-indigo-800 rounded transition-colors">Shop</Link>
             <Link to='/login' className="block py-2 px-4 hover:bg-indigo-800 rounded transition-colors">Login</Link>
             <Link to='/signup' className="block py-2 px-4 hover:bg-indigo-800 rounded transition-colors">Sign Up</Link>
-            <Link to='/cart' className="block py-2 px-4 hover:bg-indigo-800 rounded transition-colors flex items-center">
+            <Link to='/cart' className=" py-2 px-4 hover:bg-indigo-800 rounded transition-colors flex items-center">
               <span>Cart</span>
               <span className="ml-2 bg-yellow-400 text-indigo-900 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">3</span>
             </Link>
