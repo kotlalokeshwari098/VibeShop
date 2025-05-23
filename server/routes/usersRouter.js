@@ -1,5 +1,5 @@
 import express from 'express'
-
+import { registerUser } from '../controllers/authController.js'
 
 const router=express.Router()
 
@@ -10,10 +10,6 @@ if(process.env.NODE_ENV==="development"){
     })
 }
 
-
-router.get('/',(req,res)=>{
-    res.send("Hiiii from userRoute")
-})
-
+router.post('/register',registerUser)
 
 export default router

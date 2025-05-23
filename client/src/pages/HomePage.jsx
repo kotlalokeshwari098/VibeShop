@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import { userService } from '../services/userService'
 
 function HomePage() {
+    // const [data,setData]=useState('')
+
+    useEffect(()=>{
+      const getData=async()=>{
+           const item=await userService();
+           console.log(item)
+      }
+
+      getData()
+      
+    },[])
+
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
