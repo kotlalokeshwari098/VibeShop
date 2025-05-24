@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+// import { userRegister } from '../services/userService';
+import { useNavigate } from 'react-router-dom';
+import { userLogin } from '../services/userService';
 
 function Login() {
+  const navigate=useNavigate()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -16,9 +20,23 @@ function Login() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(formData);
+    try{
+      const userlogin=await userLogin(formData)
+      console.log(userlogin)
+      setFormData({
+    email: '',
+    password: ''
+  })
+      navigate('/shop')
+    }
+    catch(err){
+      console.log(err.message)
+    }
+   
+
   };
 
   return (

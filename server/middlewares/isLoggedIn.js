@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
-import usermodel from '../models/usermodel'
+import usermodel from '../models/usermodel.js'
 
-export async function loggedIn(req,res,next){
+export default async function loggedIn(req,res,next){
     if(!req.cookies.token){
        return res.send("error you need to login first")
         

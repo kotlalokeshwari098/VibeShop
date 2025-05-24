@@ -22,7 +22,9 @@ export const registerUser = async(req,res)=>{
       let token=generateToken(user)
       
       //  console.log(token)
-     res.cookie("token",token);
+     res.cookie("token",token,{
+        httpOnly:true
+     });
      res.send("user created successfully")
     }
      catch(err){
@@ -46,6 +48,18 @@ export const loginUser = async (req,res)=>{
          else{
             res.send("Email or Password incorrect")
          }
+          
+    }
+    catch(err){
+        res.send(err.message)
+    }
+}
+export const logoutUser = async (req,res)=>{
+     try{
+        res.clearCookie("token",{
+         httpOnly:true
+        })
+        res.send('logout successfullyy')
           
     }
     catch(err){

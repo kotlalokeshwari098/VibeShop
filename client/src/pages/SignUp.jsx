@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { userRegister } from '../services/userService';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
+  const navigate=useNavigate()
   const [formData, setFormData] = useState({
     fullname: '',
     email: '',
@@ -17,10 +20,23 @@ function SignUp() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission
     console.log(formData);
+    try{
+      const item=await userRegister(formData)
+     console.log(item)
+     navigate('/login')
+      setFormData({fullname: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    contact: ''})
+    }
+    catch(err){
+      console.log(err.message)
+    }
   };
 
   return (
