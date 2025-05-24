@@ -5,7 +5,7 @@
 GET {{base_url}}/owners
 
 ###create route
-POST {{base_url}}/owners/create
+POST {{base_url}}/owners/register
 Content-Type: application/json
 
 {

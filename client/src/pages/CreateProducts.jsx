@@ -27,6 +27,7 @@ function CreateProducts() {
     function handleSubmit(e){
         setProducts(prev=>[...prev,form])
         e.preventDefault()
+        
         setFormData({
             image:'',
          name:'',

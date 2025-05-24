@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { userRegister } from '../services/userService';
+import { ownerRegister } from '../services/userService.js';
 import { useNavigate } from 'react-router-dom';
 
-function SignUp() {
+function OwnerSignup() {
   const navigate=useNavigate()
   const [formData, setFormData] = useState({
     fullname: '',
@@ -25,9 +25,13 @@ function SignUp() {
     // Handle form submission
     console.log(formData);
     try{
-      const item=await userRegister(formData)
-     console.log(item)
-     navigate('/login')
+      const item=await ownerRegister(formData)
+     console.log("item",item)
+      if (item) {
+    console.log("Navigating now...");
+    navigate('/ownerlogin');
+  }
+     
       setFormData({fullname: '',
     email: '',
     password: '',
@@ -44,12 +48,12 @@ function SignUp() {
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Create your user account
+            Create your account
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or{' '}
-            <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
-              sign in to your existing user account
+            <Link to="/ownerlogin" className="font-medium text-indigo-600 hover:text-indigo-500">
+              sign in to your existing account
             </Link>
           </p>
         </div>
@@ -196,13 +200,6 @@ function SignUp() {
                 </a>
               </div>
             </div>
-            <div className="px-10 py-4 bg-gray-50 border-t border-gray-200 rounded-b-lg">
-                        <div className="text-sm text-center">
-                          <Link to="/ownersignup" className="font-medium text-indigo-600 hover:text-indigo-500">
-                            Sign up as a Owner
-                          </Link>
-                        </div>
-                      </div>
           </div>
         </div>
       </div>
@@ -210,4 +207,4 @@ function SignUp() {
   )
 }
 
-export default SignUp
+export default OwnerSignup

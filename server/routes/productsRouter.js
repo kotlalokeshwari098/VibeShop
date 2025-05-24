@@ -15,5 +15,23 @@ router.get('/',(req,res)=>{
     res.send("Hiiii from productsRoute")
 })
 
+// router.post('/products',(req,res)=>{
+//       const {image,name,price,discount,bgcolor,textcolor,panelcolor}=req.body
+
+//       try{
+//         let products=
+//       }
+//       catch(err){
+//         console.log(err.message)
+//       }
+// })
+
 
 export default router
+//  image:'',
+        //  name:'',
+        //  price:'',
+        //  discount:'',
+        //  bgcolor:'',
+        //  textcolor:'',
+        //  panelcolor:''

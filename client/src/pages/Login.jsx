@@ -30,7 +30,7 @@ function Login() {
     email: '',
     password: ''
   })
-      navigate('/shop')
+      navigate('/vibeSetup')
     }
     catch(err){
       console.log(err.message)

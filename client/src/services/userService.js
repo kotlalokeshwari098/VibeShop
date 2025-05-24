@@ -31,3 +31,23 @@ export async function userLogout(){
      })
      console.log(user)
 }
+
+export async function ownerRegister(formData){
+     const data=await axiosInstance.post('/owners/register',formData,{
+          withCredentials:true,
+          headers:{
+               "Content-Type":"application/json"
+          }
+     })
+     return data
+}
+export async function ownerLogin(formData){
+     const data=await axiosInstance.post('/owners/login',formData,{
+          withCredentials:true,
+               headers:{
+                    "Content-Type":"application/json"
+               }
+          
+     })
+     return data
+}

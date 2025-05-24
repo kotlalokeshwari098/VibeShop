@@ -10,6 +10,7 @@ import Shop from './pages/Shop'
 import SignUp from './pages/SignUp'
 import AppLayout from './layouts/AppLayout';
 import VibeSetup from './pages/VibeSetup';
+import OwnerSignUp from './pages/OwnerSignup'
 
 
  const routes=createBrowserRouter(createRoutesFromElements(
@@ -19,9 +20,10 @@ import VibeSetup from './pages/VibeSetup';
            <Route path='/cart' element={<Cart />}/>
            <Route path='/createproducts' element={<CreateProducts />}/>
            <Route path='/login' element={<Login/>}/>
-           <Route path='/ownerlogin' element={<OwnerLogin/>}/>
-           <Route path='/shop' element={<Shop/>}/>
-           <Route path='/signup' element={<SignUp/>}/>
+           <Route path='/ownerlogin' element={<OwnerLogin />}/>
+           <Route path='/shop' element={<Shop />}/>
+           <Route path='/signup' element={<SignUp />}/>
+           <Route path='/ownersignup' element={<OwnerSignUp />}/>
            <Route path='vibesetup' element={<VibeSetup />}/>
          </Route>
        

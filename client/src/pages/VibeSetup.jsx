@@ -1,8 +1,10 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
+import { useNavigate } from 'react-router';
 
 function VibeSetup() {
+    const navigate=useNavigate()
     
     const [data,setData]=useState({
         occasion:'',
@@ -26,6 +28,7 @@ function VibeSetup() {
     function submitData(e){
         e.preventDefault();
          console.log(data)
+         navigate('/shop')
     }
 
   return (
