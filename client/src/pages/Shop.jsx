@@ -1,20 +1,27 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import { getProducts } from '../services/products';
+import { bufferToImageUrl } from '../utils/bufferimage';
 
 function Shop() {
   const [sortBy, setSortBy] = useState('popular');
+  const [products,setProducts]=useState([])
   
-  // Sample product data for visualization
-  const products = [
-    { id: 1, name: 'Eco-Friendly Bag', price: 1200, discount: 20, img: 'pink' },
-    { id: 2, name: 'Casual Backpack', price: 1800, discount: 0, img: 'blue' },
-    { id: 3, name: 'Festival Tote', price: 950, discount: 15, img: 'green' },
-    { id: 4, name: 'Hiking Daypack', price: 2300, discount: 10, img: 'purple' },
-    { id: 5, name: 'Beach Bag', price: 890, discount: 0, img: 'orange' },
-    { id: 6, name: 'Urban Sling', price: 1450, discount: 5, img: 'yellow' },
-    { id: 8, name: 'Weekend Duffel', price: 2100, discount: 0, img: 'indigo' },
-    { id: 7, name: 'Party Clutch', price: 750, discount: 0, img: 'teal' },
-  ];
+  useEffect(()=>{
+     const product=async ()=>{
+      try{
+        const response= await getProducts();
+        setProducts(response.data)
+        console.log(response.data)
+     }
+     catch(err){
+      console.log(err.message)
+     }
+         
+     }
+     product()
+  },[])
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -140,26 +147,33 @@ function Shop() {
           </div>
           
           {/* Product Grid */}
-          <div className="w-full md:w-3/4">
+           <div className="w-full md:w-3/4">
             <div className="mb-4 flex justify-between items-center">
               <h2 className="text-xl font-bold text-gray-900">All Products</h2>
-              <span className="text-gray-500 text-sm">{products.length} products</span>
+              <span className="text-gray-500 text-sm"> products</span>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map(product => (
                 <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-200 hover:scale-105 hover:shadow-lg">
-                  <div className={`h-48 bg-${product.img}-500 bg-opacity-80 flex items-center justify-center`}>
-                    {/* Product image placeholder */}
+                  {/* <div className={`h-48 bg-${product.image}-500 bg-opacity-80 flex items-center justify-center`}>
+                     Product image placeholder *
                     <span className="text-4xl">🛍️</span>
+                  </div> */}
+                  <div className={` bg-opacity-80 flex items-center justify-center  h-52 w-full`} style={{ backgroundColor: `#${product.bgcolor}` }}>
+                     <img src={bufferToImageUrl(product.image.data, "image/webp")} alt="" className="w-1/2 "/>
                   </div>
-                  <div className="p-4">
+                  
+                  <div className={`p-4`} style={{
+    backgroundColor: `#${product.panelcolor}`,
+    color: `#${product.textcolor}`
+  }}>
                     <h3 className="font-medium text-gray-900 mb-2">{product.name}</h3>
                     <div className="flex justify-between items-center mb-4">
                       <div>
                         {product.discount > 0 ? (
                           <>
-                            <span className="line-through text-gray-500 mr-2">₹{product.price}</span>
+                            <span className="line-through text-white-500 mr-2">₹{product.price}</span>
                             <span className="font-bold text-indigo-600">
                               ₹{Math.round(product.price * (1 - product.discount/100))}
                             </span>
@@ -205,7 +219,7 @@ function Shop() {
                 </a>
               </nav>
             </div>
-          </div>
+          </div> 
         </div>
       </div>
     </div>
