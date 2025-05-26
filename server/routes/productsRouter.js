@@ -1,7 +1,9 @@
 import express from 'express'
 import upload from '../config/multer-config.js'
-import { productsCreate } from '../controllers/productsController.js'
+import { productsCreate,productsGet,getShopProducts ,addCartItems} from '../controllers/productsController.js'
 import productmodel from '../models/productmodel.js'
+import loggedIn from '../middlewares/isLoggedIn.js'
+import usermodel from '../models/usermodel.js'
 
 const router=express.Router()
 
@@ -18,14 +20,10 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/create',upload.single("image"),productsCreate)
-router.get('/shop',async (req,res)=>{
-     try{
-        const data=await productmodel.find()
-        res.send(data)
-     }
-     catch(err){
-        console.log(err.message)
-     }
-})
+router.get('/shop',loggedIn,getShopProducts)
+
+router.get('/cart',loggedIn,productsGet)
+
+router.get('/addToCart/:id',loggedIn,addCartItems)
 
 export default router

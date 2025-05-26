@@ -9,8 +9,8 @@ POST {{base_url}}/owners/register
 Content-Type: application/json
 
 {
-    "fullname":"Shashi preetham",
-      "email":"shashi@gmail.com",
+    "fullname":"Shashi",
+      "email":"shashi@email.com",
       "password":"bt123"
 }
 
@@ -43,3 +43,7 @@ Content-Type: application/json
       "email":"shashi@gmail.com",
       "password":"bt"
 }
+
+
+###add to cart
+GET {{base_url}}/products/addToCart/6832d5898979299ae6e2fbcf

@@ -7,7 +7,7 @@ export default async function loggedIn(req,res,next){
         
     }
     try{
-       let decode= jwt.verify(res.cookies.token,process.env.JWT_KEY)
+       let decode= jwt.verify(req.cookies.token,process.env.JWT_KEY)
        let user=await usermodel
        .findOne({email:decode.email})
        .select('-password')

@@ -15,4 +15,4 @@ const productSchema=mongoose.Schema({
      textcolor:String
 })
 
-export default mongoose.model('products',productSchema)
+export default mongoose.model('product',productSchema)

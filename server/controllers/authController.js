@@ -95,7 +95,7 @@ export const registerOwner = async(req,res)=>{
      res.cookie("token",token,{
         httpOnly:true
      });
-     res.send("user created successfully")
+     res.send("owner created successfully")
     }
      catch(err){
         res.send(err.message)

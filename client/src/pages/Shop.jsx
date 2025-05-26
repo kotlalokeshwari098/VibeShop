@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { getProducts } from '../services/products';
 import { bufferToImageUrl } from '../utils/bufferimage';
+import { cartAdding } from '../services/cart';
 
 function Shop() {
   const [sortBy, setSortBy] = useState('popular');
@@ -13,7 +14,6 @@ function Shop() {
       try{
         const response= await getProducts();
         setProducts(response.data)
-        console.log(response.data)
      }
      catch(err){
       console.log(err.message)
@@ -22,6 +22,15 @@ function Shop() {
      }
      product()
   },[])
+
+  async function addToCart(id){
+     try{
+         const data=await cartAdding(id)
+         console.log(data)
+     }catch(err){
+        console.log(err.message)
+     } 
+  }
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -154,7 +163,7 @@ function Shop() {
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map(product => (
+              {products && products.map(product => (
                 <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-200 hover:scale-105 hover:shadow-lg">
                   {/* <div className={`h-48 bg-${product.image}-500 bg-opacity-80 flex items-center justify-center`}>
                      Product image placeholder *
@@ -188,12 +197,16 @@ function Shop() {
                         </span>
                       )}
                     </div>
-                    <button className="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md flex items-center justify-center transition duration-200">
+                  
+                       <button className="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md flex items-center justify-center transition duration-200" onClick={()=>addToCart(product._id)}>
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                       </svg>
                       Add to Cart
                     </button>
+                    
+                 
+                   
                   </div>
                 </div>
               ))}

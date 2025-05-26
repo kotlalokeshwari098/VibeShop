@@ -23,7 +23,7 @@ export const getProducts=async()=>{
                }
           
      })
-    console.log(response)
+    // console.log(response)
     return response;
   }
   catch(err){

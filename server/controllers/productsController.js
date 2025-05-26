@@ -15,3 +15,40 @@ export const productsCreate=async (req,res)=>{
     res.send(err.message);
   }
 }
+export const getShopProducts=async (req,res)=>{
+     try{
+        const data=await productmodel.find()
+        res.send(data)
+     }
+     catch(err){
+        console.log(err.message)
+     }
+}
+
+export const productsGet=async (req,res)=>{
+     try{
+       let user=await usermodel.findOne({email:req.user.email}).populate("cart")
+
+        // console.log(user.cart);
+        res.send(user)
+     }
+     catch(err){
+        console.log(err.message)
+     }
+}
+
+export const addCartItems=async (req,res)=>{
+    console.log(req.user)
+    try{
+       let user=await usermodel.findOne({email:req.user.email})
+       console.log(user)
+    user.cart.push(req.params.id)
+    await user.save()
+    res.send("product added successfully")
+    }
+    catch(err){
+        console.log("err",err.message)
+        res.send("err",err.message)
+    }
+    
+}
